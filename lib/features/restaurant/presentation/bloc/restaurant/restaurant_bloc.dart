@@ -8,6 +8,7 @@ class RestaurantBloc extends Bloc<RestaurantEvent, RestaurantState> {
 
   RestaurantBloc({required this.repository}) : super(RestaurantInitial()) {
     on<FetchRestaurantsEvent>(_onFetchRestaurants);
+    on<SearchRestaurantsEvent>(_onSearchRestaurants);
   }
 
   void _onFetchRestaurants(
@@ -15,6 +16,17 @@ class RestaurantBloc extends Bloc<RestaurantEvent, RestaurantState> {
     emit(RestaurantLoading());
     try {
       final restaurants = await repository.getRestaurants();
+      emit(RestaurantLoaded(restaurants));
+    } catch (e) {
+      emit(RestaurantError(e.toString()));
+    }
+  }
+
+  void _onSearchRestaurants(
+      SearchRestaurantsEvent event, Emitter<RestaurantState> emit) async {
+    emit(RestaurantLoading());
+    try {
+      final restaurants = await repository.searchRestaurants(event.query);
       emit(RestaurantLoaded(restaurants));
     } catch (e) {
       emit(RestaurantError(e.toString()));

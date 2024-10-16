@@ -11,4 +11,9 @@ class RestaurantRepositoryImpl implements RestaurantRepository {
   Future<List<Restaurant>> getRestaurants() async {
     return await remoteDataSource.getAllRestaurant();
   }
+
+  @override
+  Future<List<Restaurant>> searchRestaurants(String query) async {
+    return await remoteDataSource.searchRestaurants(query);
+  }
 }

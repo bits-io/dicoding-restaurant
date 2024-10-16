@@ -8,3 +8,12 @@ abstract class RestaurantEvent extends Equatable {
 }
 
 class FetchRestaurantsEvent extends RestaurantEvent {}
+
+class SearchRestaurantsEvent extends RestaurantEvent {
+  final String query;
+
+  const SearchRestaurantsEvent(this.query);
+
+  @override
+  List<Object> get props => [query];
+}

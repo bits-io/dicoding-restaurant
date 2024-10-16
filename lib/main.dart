@@ -1,3 +1,4 @@
+import 'package:dicoding_restaurant/core/utils/connection.dart';
 import 'package:dicoding_restaurant/features/restaurant/domain/repositories/restaurant_repository.dart';
 import 'package:dicoding_restaurant/features/restaurant/presentation/bloc/restaurant/restaurant_event.dart';
 import 'package:flutter/material.dart';
@@ -37,6 +38,10 @@ class MyApp extends StatelessWidget {
           create: (context) =>
               RestaurantBloc(repository: context.read<RestaurantRepository>())
                 ..add(FetchRestaurantsEvent()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              ConnectivityCubit(), // Tambahkan ConnectivityCubit
         ),
         // Add other BlocProviders here if needed
       ],
