@@ -64,9 +64,9 @@ class RestaurantDetailPage extends StatelessWidget {
                     height: 120,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: restaurant.foods.length,
+                      itemCount: restaurant.menus.foods.length,
                       itemBuilder: (context, index) {
-                        final food = restaurant.foods[index];
+                        final food = restaurant.menus.foods[index];
                         return Container(
                           width: 150,
                           height: 120,
@@ -96,7 +96,7 @@ class RestaurantDetailPage extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        food,
+                                        food.name,
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
@@ -130,9 +130,9 @@ class RestaurantDetailPage extends StatelessWidget {
                     height: 120,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: restaurant.drinks.length,
+                      itemCount: restaurant.menus.drinks.length,
                       itemBuilder: (context, index) {
-                        final drink = restaurant.drinks[index];
+                        final drink = restaurant.menus.drinks[index];
                         return Container(
                           width: 150,
                           height: 120,
@@ -162,7 +162,7 @@ class RestaurantDetailPage extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        drink,
+                                        drink.name,
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,

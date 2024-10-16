@@ -1,14 +1,14 @@
 import '../../domain/entities/restaurant.dart';
 import '../../domain/repositories/restaurant_repository.dart';
-import '../datasources/restaurant_local_data_source.dart';
+import '../datasources/restaurant_remote_data_source.dart';
 
 class RestaurantRepositoryImpl implements RestaurantRepository {
-  final RestaurantLocalDataSource localDataSource;
+  final RestaurantRemoteDataSource remoteDataSource;
 
-  RestaurantRepositoryImpl({required this.localDataSource});
+  RestaurantRepositoryImpl({required this.remoteDataSource});
 
   @override
   Future<List<Restaurant>> getRestaurants() async {
-    return await localDataSource.getRestaurantsFromJson();
+    return await remoteDataSource.getAllRestaurant();
   }
 }
